@@ -1,0 +1,74 @@
+"use client";
+import { useEffect, useState } from "react";
+
+export default function Hero() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const slides = [
+    {
+      heading: "Jewellery Repair Tracker",
+      text: "Our custom-built repair tracker app made specifically for the jewellery industry.",
+      cta: "See Repair Tracker",
+      bg: "/images/jumbotron1.jpg",
+    },
+    {
+      heading: "QR Code Generator",
+      text: "Trackable, brand-matched QR codes for smart marketing.",
+      cta: "Try Our QR Tool",
+      bg: "/images/jumbotron2.jpg",
+    },
+    {
+      heading: "Automate Your Workflow",
+      text: "Custom web apps that simplify your operations.",
+      cta: "Explore Services",
+      bg: "/images/jumbotron1.jpg",
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % slides.length);
+    }, 7000); // change slide every 7 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  const current = slides[activeSlide];
+
+  return (
+    <section
+      className="position-relative d-flex align-items-center justify-content-center text-end text-white"
+      style={{ minHeight: "100vh", overflow: "hidden" }}
+    >
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`hero-bg-layer ${index === activeSlide ? "active" : ""}`}
+          style={{
+            backgroundImage: `linear-gradient(to right, rgba(34, 59, 104, 0.8), rgba(47, 87, 115, 0.6)), url(${slide.bg})`,
+          }}
+        ></div>
+      ))}
+
+      <div className="container position-relative z-2 px-3">
+        <div className="hero-content animate-fade-in">
+          <h1 className="display-5 fw-bold">{current.heading}</h1>
+          <p className="lead">{current.text}</p>
+          <a href="#services" className="btn btn-primary btn-lg mt-3">
+            {current.cta}
+          </a>
+
+          <div className="d-flex justify-content-center gap-2 mt-4">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                className={`dot ${index === activeSlide ? "active" : ""}`}
+                onClick={() => setActiveSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

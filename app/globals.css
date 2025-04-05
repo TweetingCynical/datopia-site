@@ -1,13 +1,17 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "bootstrap/dist/css/bootstrap.min.css";
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* Brand colours */
+  --brandcolor1: #223b68;
+  --brandcolor2: #2f5773;
+  --brandcolor3: #498a9b;
+  --brandcolor4: #66b2a1;
+  --brandcolor5: #57c0d3;
+
+  --background: white;
+  --foreground: var(--brandcolor1);
+  --font-heading: var(--font-bruno-ace);
+  --font-body: var(--font-montserrat);
 }
 
 html,
@@ -19,9 +23,18 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), sans-serif;
 }
 
 * {
@@ -35,8 +48,137 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+.text-on-dark {
+  color: white;
+}
+.text-on-light {
+  color: var(--brandcolor1);
+}
+.bg-brand1 {
+  background-color: var(--brandcolor1);
+}
+.bg-brand2 {
+  background-color: var(--brandcolor2);
+}
+.bg-brand3 {
+  background-color: var(--brandcolor3);
+}
+.bg-brand4 {
+  background-color: var(--brandcolor4);
+}
+.bg-brand5 {
+  background-color: var(--brandcolor5);
+}
+
+.animate-fade-in {
+  animation: fadeInZoom 1s ease-in-out;
+}
+
+@keyframes fadeInZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* NAVBAR */
+
+.navbar-border {
+  border-bottom: 5px solid var(--brandcolor1) !important;
+}
+
+.navbar-nav .nav-link {
+  color: var(--brandcolor1);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: var(--brandcolor3); /* use another brand colour */
+  transition: width 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--brandcolor3);
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--brandcolor3) !important;
+}
+
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+}
+
+/* HERO SECTION AND MANUAL SLIDERS */
+
+.hero-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-bg-layer.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.5;
+  border: 2px solid white;
+  transition: opacity 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+  background-color: var(--brandcolor5);
+  border-color: var(--brandcolor5);
+}
+
+.dot:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--brandcolor1);
+    --foreground: white;
+  }
   html {
     color-scheme: dark;
   }
-}
+} */
+/* @media (prefers-contrast: more) {
+  .text-on-dark {
+    color: #ffffff !important;
+  }
+  .text-on-light {
+    color: #000000 !important;
+  }
+} */

@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Services from "./components/Services";
 import Image from "next/image";
 // import styles from "./page.module.css";
 
@@ -8,6 +9,7 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
+      <Services />
       <main className={"container pt-5 mt-5 text-center"}>
         <Image
           src="/images/datopia_logo_small.png"

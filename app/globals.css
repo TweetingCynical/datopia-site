@@ -165,6 +165,19 @@ a {
   opacity: 0.8;
 }
 
+/* SERVICE ITEMS */
+
+.service-item {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s ease;
+}
+
+.service-item.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /* BUTTONS */
 
 .btn-brand {

@@ -53,7 +53,7 @@ export default function Hero() {
         <div className="hero-content animate-fade-in">
           <h1 className="display-5 fw-bold">{current.heading}</h1>
           <p className="lead">{current.text}</p>
-          <a href="#services" className="btn btn-primary btn-lg mt-3">
+          <a href="#services" className="btn btn-brand btn-lg mt-3">
             {current.cta}
           </a>
 

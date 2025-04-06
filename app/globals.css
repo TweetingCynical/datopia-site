@@ -165,6 +165,40 @@ a {
   opacity: 0.8;
 }
 
+/* BUTTONS */
+
+.btn-brand {
+  background-color: var(--brandcolor5);
+  color: var(--brandcolor1);
+  border: none;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-brand:hover {
+  background-color: var(--brandcolor1); /* slightly darker/lighter on hover */
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-brand-outline {
+  background-color: white;
+  color: var(--brandcolor1);
+  border: 2px solid var(--brandcolor5);
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-brand-outline:hover {
+  background-color: var(--brandcolor5); /* slightly darker/lighter on hover */
+  color: var(--brandcolor1);
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: var(--brandcolor1);

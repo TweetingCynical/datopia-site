@@ -116,7 +116,7 @@ export default function Navbar() {
 
           {/* Login Button (desktop & mobile) */}
           <div className="d-flex align-items-center">
-            <a href="#login" className="btn btn-outline-primary me-2">
+            <a href="#login" className="btn btn-brand-outline me-2">
               Log In
             </a>
           </div>

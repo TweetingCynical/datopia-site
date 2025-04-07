@@ -3,14 +3,6 @@ const dotenvPath = path.resolve(__dirname, "../.env");
 require("dotenv").config({ path: dotenvPath });
 
 console.log("✅ Loaded env from:", dotenvPath);
-console.log(
-  "GOOGLE_PRIVATE_KEY_B64 exists?",
-  !!process.env.GOOGLE_PRIVATE_KEY_B64
-);
-console.log(
-  "GOOGLE_PRIVATE_KEY_B64 length:",
-  process.env.GOOGLE_PRIVATE_KEY_B64?.length
-);
 
 const privateKey = Buffer.from(
   process.env.GOOGLE_PRIVATE_KEY_B64,

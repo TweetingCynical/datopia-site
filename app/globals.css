@@ -14,6 +14,10 @@
   --font-body: var(--font-montserrat);
 }
 
+html {
+  scroll-padding-top: 90px; /* Adjust to match SiteBanner + Navbar height */
+}
+
 html,
 body {
   max-width: 100vw;
@@ -69,7 +73,10 @@ a {
 .bg-brand5 {
   background-color: var(--brandcolor5);
 }
-
+.bg-white {
+  background-color: white;
+  color: var(--brandcolor1);
+}
 .animate-fade-in {
   animation: fadeInZoom 1s ease-in-out;
 }
@@ -124,7 +131,34 @@ a {
   width: 100%;
 }
 
+.navbar.fixed-top {
+  top: 30px; /* Push down by the height of your SiteBanner */
+  z-index: 1030;
+}
+
 /* HERO SECTION AND MANUAL SLIDERS */
+
+.hero-section {
+  z-index: 1;
+  position: relative;
+}
+
+.services-section {
+  position: relative;
+  z-index: 2;
+  margin-top: -10px;
+  padding-top: 120px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+}
+.service-detail {
+  padding: 80px 0;
+  color: white;
+}
+.object-fit-cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 
 .hero-bg-layer {
   position: absolute;
@@ -229,3 +263,113 @@ a {
     color: #000000 !important;
   }
 } */
+
+/* Paragraph hover effect */
+.expand-paragraph {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease-in-out;
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.extra-text-wrapper.show .expand-paragraph {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hide paragraphs unless expanded, but keep in DOM */
+.extra-text-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease-in-out, opacity 0.4s ease;
+}
+
+.extra-text-wrapper.show {
+  max-height: 1000px; /* generous enough to reveal all */
+}
+
+/* TLDR block styling */
+.tldr-block {
+  border-left: 4px solid var(--brandcolor5);
+  padding-left: 1rem;
+}
+
+.tldr-title {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 0.25rem;
+}
+
+.text-accent {
+  color: var(--brandcolor5) !important;
+}
+.text-accent:hover {
+  background-color: var(--brandcolor5);
+  color: white !important;
+}
+
+/* Image zoom when expanded */
+.transition-image {
+  transition: transform 0.6s ease-in-out;
+}
+
+.transition-image.zoomed {
+  transform: scale(1.1);
+}
+
+.scrollable-text {
+  max-height: 450px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Optional: show a smooth scrollbar only when needed */
+.scrollable-text::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollable-text::-webkit-scrollbar-thumb {
+  background-color: var(--brandcolor5);
+  border-radius: 3px;
+}
+.scrollable-text::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.site-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background-color: var(--brandcolor1);
+  font-size: 0.75rem;
+  z-index: 1040; /* Must be higher than navbar (default Bootstrap navbar is 1030) */
+}
+
+.site-banner .social-icon {
+  color: white;
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.site-banner .social-icon:hover {
+  transform: scale(1.15);
+}
+
+.location-short {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .location-full {
+    display: none;
+  }
+  .location-short {
+    display: inline;
+  }
+}

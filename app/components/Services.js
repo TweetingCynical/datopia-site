@@ -44,15 +44,21 @@ export default function Services() {
       icon: "/icons/automation.png",
     },
     {
+      id: "web-dev",
+      title: "Web Development",
+      desc: "Building robust web platforms and maximising appeal with modern web design.",
+      icon: "/icons/web-development.png",
+    },
+    {
       id: "seo",
-      title: "Web Development & SEO",
-      desc: "Building robust web platforms and maximising reach with clean web design and SEO best practices.",
-      icon: "/icons/web-dev-seo.png",
+      title: "SEO and Online Reach",
+      desc: "Maximising reach with SEO best practices and tailored content creation.",
+      icon: "/icons/seo.png",
     },
   ];
 
   return (
-    <section id="services" className="py-5 bg-light">
+    <section id="services" className="services-section py-5 bg-light">
       <div className="container">
         <h2 className="text-center mb-5">Our Services</h2>
         <div className="row">

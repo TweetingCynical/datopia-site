@@ -1,15 +1,20 @@
+import SiteBanner from "./components/SiteBanner";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import ServiceDetails from "./components/ServiceDetails";
+
 import Image from "next/image";
 // import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <>
+      <SiteBanner />
       <Navbar />
       <Hero />
       <Services />
+      <ServiceDetails />
       <main className={"container pt-5 mt-5 text-center"}>
         <Image
           src="/images/datopia_logo_small.png"

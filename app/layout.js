@@ -1,5 +1,6 @@
 import { Montserrat, Bruno_Ace } from "next/font/google";
 import "./globals.css";
+import "./fontawesome";
 
 const montserrat = Montserrat({
   subsets: ["latin"],

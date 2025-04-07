@@ -45,6 +45,7 @@ export default function Hero() {
           className={`hero-bg-layer ${index === activeSlide ? "active" : ""}`}
           style={{
             backgroundImage: `linear-gradient(to right, rgba(34, 59, 104, 0.8), rgba(47, 87, 115, 0.6)), url(${slide.bg})`,
+            backgroundAttachment: "fixed",
           }}
         ></div>
       ))}

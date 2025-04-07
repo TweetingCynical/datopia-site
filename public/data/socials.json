@@ -9,7 +9,7 @@
     "Platform": "Facebook",
     "PostLink": "https://www.facebook.com/reel/468904232879470",
     "Status": "Ready",
-    "QRLink": "",
+    "QRLink": "In Test",
     "UseType": "Featured"
   },
   {
@@ -22,7 +22,7 @@
     "Platform": "X",
     "PostLink": "https://x.com/DatopiaUK/status/1907025604370678206",
     "Status": "Ready",
-    "QRLink": "",
+    "QRLink": "In Test",
     "UseType": "Standard"
   },
   {
@@ -35,7 +35,7 @@
     "Platform": "YouTube",
     "PostLink": "https://youtu.be/eFyHWMJTAug?si=4OhgbKFb_R0SlTdV",
     "Status": "Ready",
-    "QRLink": "",
+    "QRLink": "In Test",
     "UseType": "Standard"
   }
 ]

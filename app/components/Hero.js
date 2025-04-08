@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const parallaxRef = useRef([]);
 
   const slides = [
     {
@@ -33,6 +34,21 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  // Parallax effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      parallaxRef.current.forEach((el, index) => {
+        if (el) {
+          el.style.transform = `translateY(${scrollY * 0.5}px)`; // Adjust intensity
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const current = slides[activeSlide];
 
   return (
@@ -40,10 +56,11 @@ export default function Hero() {
       className="hero-section d-flex align-items-center justify-content-center text-end text-white"
       style={{ minHeight: "100vh", overflow: "hidden" }}
     >
-      {/* Animated Background Layers */}
+      {/* Animated Background Layers with Parallax */}
       {slides.map((slide, index) => (
         <div
           key={index}
+          ref={(el) => (parallaxRef.current[index] = el)}
           className={`hero-bg-layer ${index === activeSlide ? "active" : ""}`}
         >
           <Image

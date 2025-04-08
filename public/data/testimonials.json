@@ -1,0 +1,105 @@
+{
+  "result": {
+    "testimonials": [
+      {
+        "author_name": "Rachel T.",
+        "author_url": null,
+        "profile_photo_url": null,
+        "rating": 5,
+        "relative_time_description": "2 months ago",
+        "text": "The custom app Datopia built has completely streamlined how we manage repairs. Our staff picked it up quickly, and customers love getting real-time updates. Can’t thank Jon enough!",
+        "time": 1737043200,
+        "original_author_response": "Thank you for your kind words, Rachel. We're glad your app is helping your small business to grow!",
+        "language": "en"
+      },
+      {
+        "author_name": "Mike J.",
+        "author_url": null,
+        "profile_photo_url": null,
+        "rating": 5,
+        "relative_time_description": "2 months ago",
+        "text": "Jon rebuilt our website from scratch and made it mobile-friendly. We’re now getting way more enquiries online – highly recommend!",
+        "time": 1739318400,
+        "original_author_response": "Thanks Mike! I love what you wanted us to do with your site design. Mobile first design is definitely the way to go!",
+        "language": "en"
+      },
+      {
+        "author_name": "Helen D.",
+        "author_url": null,
+        "profile_photo_url": null,
+        "rating": 5,
+        "relative_time_description": "1 month ago",
+        "text": "I was struggling with Excel automations, but Jon’s training made everything click. I can now automate invoices and reports on my own!",
+        "time": 1740960000,
+        "original_author_response": "Who knew Excel could be so interesting! Seriously Helen, we're delighted we were able to help. Thanks for having us.",
+        "language": "en"
+      },
+      {
+        "author_name": "Adam L.",
+        "author_url": null,
+        "profile_photo_url": null,
+        "rating": 5,
+        "relative_time_description": "2 months ago",
+        "text": "Datopia’s SEO work has made a huge difference. We now show up on the first page for several local search terms. Really happy with the results.",
+        "time": 1738108800,
+        "original_author_response": "Thank you for your kind words, Adam. Remember, SEO is not a 'once and done' fix. Keep posting relevant information and your potential customers will keep finding you!",
+        "language": "en"
+      },
+      {
+        "author_name": "Sophie W.",
+        "author_url": null,
+        "profile_photo_url": null,
+        "rating": 5,
+        "relative_time_description": "1 month ago",
+        "text": "Had an old Mac that was painfully slow – Jon gave it a full clean and tune-up, and it runs like new. Fast, friendly, and professional service.",
+        "time": 1740182400,
+        "original_author_response": "Thank you Sophie - we're glad we could help get your business back on track! Really looking forward to see what design you have chosen for your new website build.",
+        "language": "en"
+      },
+      {
+        "author_name": "Tom R.",
+        "author_url": null,
+        "profile_photo_url": null,
+        "rating": 4,
+        "relative_time_description": "3 weeks ago",
+        "text": "The Power BI dashboard has given us a whole new level of visibility into team performance. It’s still evolving, but we’re impressed.",
+        "time": 1741478400,
+        "original_author_response": "Thanks Tom! We'll be back soon to create your new custom reports - can't wait!",
+        "language": "en"
+      },
+      {
+        "author_name": "Karen P.",
+        "author_url": null,
+        "profile_photo_url": null,
+        "rating": 5,
+        "relative_time_description": "3 months ago",
+        "text": "We brought Jon in to train our team on Power Automate. The sessions were tailored to our workflows and incredibly helpful. Saved us hours each week!",
+        "time": 1736380800,
+        "original_author_response": "Thank you Karen! We're always amazed at what ideas people have for automation. Hopefully it'll give you back hours worth of creativity elsewhere in the business.",
+        "language": "en"
+      },
+      {
+        "author_name": "Luke B.",
+        "author_url": null,
+        "profile_photo_url": null,
+        "rating": 5,
+        "relative_time_description": "2 months ago",
+        "text": "Brilliant service from Datopia. Our website finally looks professional, and the contact form actually works now. Getting solid leads too.",
+        "time": 1738531200,
+        "original_author_response": "Well done, Luke. We knew you had a solid business, it was just a few tweaks on your site to really improve the leads. We're delighted for you!",
+        "language": "en"
+      },
+      {
+        "author_name": "Emily H.",
+        "author_url": null,
+        "profile_photo_url": null,
+        "rating": 5,
+        "relative_time_description": "3 days ago",
+        "text": "I wasn’t sure what to expect, but the dashboard Datopia created lets me track sales by product and season. It’s genuinely changed how I plan.",
+        "time": 1742083200,
+        "original_author_response": "Thank you Emily. Happy to say you are the first florist that has ever asked us for a data dashboard, so we're delighted you love it!",
+        "language": "en"
+      }
+    ]
+  }
+}

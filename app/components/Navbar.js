@@ -85,6 +85,16 @@ export default function Navbar() {
             <li className="nav-item">
               <a
                 className={`nav-link ${
+                  activeSection === "socials" ? "active" : ""
+                }`}
+                href="#socials"
+              >
+                Socials
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className={`nav-link ${
                   activeSection === "blog" ? "active" : ""
                 }`}
                 href="#blog"

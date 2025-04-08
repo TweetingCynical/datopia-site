@@ -1,4 +1,5 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+@import "@fortawesome/fontawesome-svg-core/styles.css";
 
 :root {
   /* Brand colours */
@@ -407,12 +408,39 @@ a {
   }
 }
 
+/* --- Featured Card Border + Overlay Label --- */
 .featured-social-card {
   border: 3px solid gold;
-  box-shadow: 0 0 15px var(--brandcolor1);
+  border-radius: 0.375rem; /* match Bootstrap card radius */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.featured-label {
+  background: gold;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-bottom-left-radius: 0.375rem;
   z-index: 2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Make the gold border shimmer */
+.featured-social-card {
+  animation: shimmer-border 3s infinite ease-in-out;
+}
+
+@keyframes shimmer-border {
+  0%,
+  100% {
+    border-color: gold;
+  }
+  50% {
+    border-color: #ffd700;
+  }
 }
 
 .featured-social-card:hover {
@@ -420,7 +448,158 @@ a {
   box-shadow: 0 0 25px var(--brandcolor1), 0 0 10px gold;
 }
 
+.card:hover {
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
 .card-body i,
 .card-body img {
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.card-body i.fab,
+.card-body i.fab:before {
+  font-size: 1.4rem;
+  min-width: 1em;
+  min-height: 1em;
+  display: inline-block;
+}
+
+.card-body i.fab.shadow-sm {
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.social-icon {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icon:hover {
+  animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.scroll-container {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.scroll-snap {
+  scroll-snap-align: center;
+}
+
+.scroll-btn {
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 40%;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.scroll-left {
+  left: -10px;
+}
+
+.scroll-right {
+  right: -10px;
+}
+
+.text-brand5 {
+  color: var(--brandcolor5);
+}
+
+.arrow-hover:hover {
+  transform: scale(1.2);
+  color: var(--brandcolor1);
+}
+
+.card-width {
+  width: 90vw;
+  max-width: 320px;
+}
+
+@media (min-width: 576px) {
+  .card-width {
+    width: 45vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-width {
+    width: 30vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-width {
+    width: 25vw;
+    max-width: 360px;
+  }
+}
+
+.scroll-container-wrapper {
+  position: relative;
+}
+
+.scroll-container::before,
+.scroll-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.scroll-container::before {
+  left: 0;
+  background: linear-gradient(to right, #f8f9fa, transparent);
+}
+
+.scroll-container::after {
+  right: 0;
+  background: linear-gradient(to left, #f8f9fa, transparent);
+}
+
+.card-width {
+  width: 90vw;
+  max-width: 320px;
+}
+
+@media (min-width: 576px) {
+  .card-width {
+    width: 45vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-width {
+    width: 30vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-width {
+    width: 25vw;
+    max-width: 360px;
+  }
 }

@@ -1,86 +1,73 @@
 "use client";
+import "../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebook,
-  faXTwitter,
-  faInstagram,
-  faYoutube,
-  faPinterest,
-  faTiktok,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
 
 export default function SiteBanner() {
+  const socialLinks = [
+    {
+      href: "#contact",
+      label: "Email",
+      icon: ["fas", "envelope"], // solid
+    },
+    {
+      href: "https://www.facebook.com/DatopiaUK",
+      label: "Facebook",
+      icon: ["fab", "facebook"],
+    },
+    {
+      href: "https://www.x.com/DatopiaUK",
+      label: "X",
+      icon: ["fab", "x-twitter"],
+    },
+    {
+      href: "https://www.instagram.com/DatopiaUK",
+      label: "Instagram",
+      icon: ["fab", "instagram"],
+    },
+    {
+      href: "https://www.youtube.com/channel/@DatopiaUK",
+      label: "YouTube",
+      icon: ["fab", "youtube"],
+    },
+    {
+      href: "https://www.pinterest.com/DatopiaUK",
+      label: "Pinterest",
+      icon: ["fab", "pinterest"],
+    },
+    {
+      href: "https://www.tiktok.com/@datopiauk",
+      label: "TikTok",
+      icon: ["fab", "tiktok"],
+    },
+    {
+      href: "https://www.linkedin.com/company/DatopiaUK",
+      label: "LinkedIn",
+      icon: ["fab", "linkedin"],
+    },
+  ];
+
   return (
     <div className="site-banner fixed-top d-flex justify-content-between align-items-center px-3 px-md-2">
       <div className="d-flex align-items-center text-white fw-bold gap-2">
-        <FontAwesomeIcon icon={faLocationDot} />
+        <FontAwesomeIcon icon={["fas", "location-dot"]} />
         <span className="location-text">
-          <span className="location-full">Plymouth, Devon and Cornwall</span>
+          <span className="location-full">Plymouth, and Devon & Cornwall</span>
           <span className="location-short">SW</span>
         </span>
       </div>
+
       <div className="d-flex align-items-center gap-3">
-        <a href="#contact" aria-label="Email">
-          <FontAwesomeIcon icon={faEnvelope} className="social-icon" />{" "}
-        </a>
-        <a
-          href="https://www.facebook.com/DatopiaUK"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-        >
-          <FontAwesomeIcon icon={faFacebook} className="social-icon" />
-        </a>
-        <a
-          href="https://www.x.com/DatopiaUK"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Twitter"
-        >
-          <FontAwesomeIcon icon={faXTwitter} className="social-icon" />
-        </a>
-        <a
-          href="https://www.instagram.com/DatopiaUK"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-        >
-          <FontAwesomeIcon icon={faInstagram} className="social-icon" />
-        </a>
-        <a
-          href="https://www.youtube.com/channel/@DatopiaUK"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="YouTube"
-        >
-          <FontAwesomeIcon icon={faYoutube} className="social-icon" />
-        </a>
-        <a
-          href="https://www.pinterest.com/DatopiaUK"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Pinterest"
-        >
-          <FontAwesomeIcon icon={faPinterest} className="social-icon" />
-        </a>
-        <a
-          href="https://www.tiktok.com/@datopiauk"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="TikTok"
-        >
-          <FontAwesomeIcon icon={faTiktok} className="social-icon" />
-        </a>
-        <a
-          href="https://www.linkedin.com/company/DatopiaUK"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-        >
-          <FontAwesomeIcon icon={faLinkedin} className="social-icon" />
-        </a>
+        {socialLinks.map(({ href, label, icon }) => (
+          <a
+            key={label}
+            href={href}
+            aria-label={label}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+          >
+            <FontAwesomeIcon icon={icon} className="social-icon" />
+          </a>
+        ))}
       </div>
     </div>
   );

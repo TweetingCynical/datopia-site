@@ -1,3 +1,5 @@
+// Socials.js (finalised horizontal scroll layout with visual balance and adaptive sizing)
+
 "use client";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
@@ -18,12 +20,6 @@ const ALLOWED_PLATFORMS = [
 
 export default function Socials() {
   const [posts, setPosts] = useState([]);
-  const [scrollIndex, setScrollIndex] = useState(0);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(null);
-  const scrollRef = useRef(null);
-  const cardWidth = 320;
 
   useEffect(() => {
     fetch("/data/socials.json")
@@ -46,7 +42,6 @@ export default function Socials() {
             if (isPinnedA !== isPinnedB) return isPinnedB - isPinnedA;
             return new Date(b.Posted) - new Date(a.Posted);
           });
-
         setPosts(filtered);
       })
       .catch((err) => console.error("Could not load socials:", err));
@@ -76,7 +71,6 @@ export default function Socials() {
       linkedin: ["fab", "linkedin"],
       google: ["fab", "google"],
     };
-
     const brandClass = `social-${name}`;
 
     if (name === "blog") {
@@ -100,99 +94,15 @@ export default function Socials() {
     ) : null;
   };
 
-  const scrollLeft = () => {
-    setScrollIndex((prev) => Math.max(prev - 1, 0));
-  };
-
-  const scrollRight = () => {
-    const maxIndex = Math.max(posts.length - 1, 0);
-    setScrollIndex((prev) => Math.min(prev + 1, maxIndex));
-  };
-
-  const checkScrollability = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 5);
-    }
-  };
-
-  useEffect(() => {
-    checkScrollability();
-    if (scrollRef.current) {
-      scrollRef.current.scrollTo({
-        left: scrollIndex * cardWidth,
-        behavior: "smooth",
-      });
-    }
-  }, [scrollIndex]);
-
-  useEffect(() => {
-    checkScrollability();
-    window.addEventListener("resize", checkScrollability);
-    return () => window.removeEventListener("resize", checkScrollability);
-  }, []);
-
-  const handleTouchStart = (e) => {
-    setTouchStartX(e.changedTouches[0].clientX);
-  };
-
-  const handleTouchEnd = (e) => {
-    const endX = e.changedTouches[0].clientX;
-    if (!touchStartX) return;
-    const diff = touchStartX - endX;
-    if (diff > 50) scrollRight();
-    else if (diff < -50) scrollLeft();
-    setTouchStartX(null);
-  };
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const index = Math.round(scrollRef.current.scrollLeft / cardWidth);
-      setScrollIndex(index);
-      checkScrollability();
-    }
-  };
-
   return (
     <section id="socials" className="py-5 bg-light">
       <div className="container">
         <h2 className="mb-4 text-center">Latest Socials</h2>
 
-        <div className="scroll-container-wrapper position-relative">
-          {/* Navigation Arrows */}
-          {canScrollLeft && (
-            <button
-              className="scroll-btn scroll-left"
-              onClick={scrollLeft}
-              aria-label="Scroll left"
-            >
-              <FontAwesomeIcon
-                icon={["fas", "arrow-left"]}
-                className="fa-4x text-brand5"
-              />
-            </button>
-          )}
-          {canScrollRight && (
-            <button
-              className="scroll-btn scroll-right"
-              onClick={scrollRight}
-              aria-label="Scroll right"
-            >
-              <FontAwesomeIcon
-                icon={["fas", "arrow-right"]}
-                className="fa-2x text-brand5"
-              />
-            </button>
-          )}
-
-          {/* Scrollable Row */}
+        <div className="scroll-area-wrapper overflow-hidden">
           <div
-            className="scroll-container d-flex overflow-auto gap-3 justify-content-center"
-            ref={scrollRef}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-            onScroll={handleScroll}
+            className="d-flex gap-4 overflow-auto scroll-snap-x px-2"
+            style={{ scrollSnapType: "x mandatory" }}
           >
             {posts.map((post, index) => {
               const isFeatured =
@@ -203,7 +113,8 @@ export default function Socials() {
               return (
                 <div
                   key={index}
-                  className="flex-shrink-0 scroll-snap card-width mx-auto"
+                  className="flex-shrink-0 card-width mx-auto"
+                  style={{ scrollSnapAlign: "start" }}
                 >
                   <a
                     href={link}
@@ -259,16 +170,6 @@ export default function Socials() {
                 </div>
               );
             })}
-          </div>
-
-          {/* Dots */}
-          <div className="d-flex justify-content-center gap-2 mt-4">
-            {posts.map((_, i) => (
-              <div
-                key={i}
-                className={`dot ${i === scrollIndex ? "active" : ""}`}
-              />
-            ))}
           </div>
         </div>
       </div>

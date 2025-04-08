@@ -526,60 +526,10 @@ a {
   color: var(--brandcolor5);
 }
 
-.arrow-hover:hover {
-  transform: scale(1.2);
-  color: var(--brandcolor1);
-}
-
-.card-width {
-  width: 90vw;
-  max-width: 320px;
-}
-
-@media (min-width: 576px) {
-  .card-width {
-    width: 45vw;
-  }
-}
-
-@media (min-width: 768px) {
-  .card-width {
-    width: 30vw;
-  }
-}
-
-@media (min-width: 1200px) {
-  .card-width {
-    width: 25vw;
-    max-width: 360px;
-  }
-}
-
 .scroll-container-wrapper {
   position: relative;
 }
 
-.scroll-container::before,
-.scroll-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 60px;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.scroll-container::before {
-  left: 0;
-  background: linear-gradient(to right, #f8f9fa, transparent);
-}
-
-.scroll-container::after {
-  right: 0;
-  background: linear-gradient(to left, #f8f9fa, transparent);
-}
-
 .card-width {
   width: 90vw;
   max-width: 320px;
@@ -597,9 +547,86 @@ a {
   }
 }
 
-@media (min-width: 1200px) {
-  .card-width {
-    width: 25vw;
-    max-width: 360px;
+/* --- Socials Scroll Container --- */
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin: 0 auto;
+  max-width: 100vw;
+}
+
+/* Hide scrollbar for better UX */
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+.scroll-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* --- Scrollable Card --- */
+.scroll-snap {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 320px;
+}
+
+/* Adjust card width for larger screens */
+@media (min-width: 768px) {
+  .scroll-snap {
+    width: 350px;
+  }
+}
+@media (min-width: 992px) {
+  .scroll-snap {
+    width: 380px;
+  }
+}
+
+/* Make sure dot pagination remains centered */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.5;
+  border: 2px solid white;
+  transition: opacity 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+  background-color: var(--brandcolor5);
+  border-color: var(--brandcolor5);
+}
+
+.dot:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* Reduce heading size inside social cards */
+.card-title {
+  font-size: 1.1rem;
+  /* font-weight: 600; */
+  margin-bottom: 0.5rem;
+}
+
+/* Reduce TLDR text size inside social cards */
+.card-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .card-title {
+    font-size: 1rem;
+  }
+  .card-text {
+    font-size: 0.9rem;
   }
 }

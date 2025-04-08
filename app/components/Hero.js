@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -28,7 +29,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 7000); // change slide every 7 seconds
+    }, 7000);
     return () => clearInterval(interval);
   }, []);
 
@@ -36,20 +37,33 @@ export default function Hero() {
 
   return (
     <section
-      className="position-relative d-flex align-items-center justify-content-center text-end text-white"
+      className="hero-section d-flex align-items-center justify-content-center text-end text-white"
       style={{ minHeight: "100vh", overflow: "hidden" }}
     >
+      {/* Animated Background Layers */}
       {slides.map((slide, index) => (
         <div
           key={index}
           className={`hero-bg-layer ${index === activeSlide ? "active" : ""}`}
-          style={{
-            backgroundImage: `linear-gradient(to right, rgba(34, 59, 104, 0.8), rgba(47, 87, 115, 0.6)), url(${slide.bg})`,
-            backgroundAttachment: "fixed",
-          }}
-        ></div>
+        >
+          <Image
+            src={slide.bg}
+            alt={slide.heading}
+            fill
+            priority
+            className="object-fit-cover"
+          />
+          <div
+            className="position-absolute top-0 start-0 w-100 h-100"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(34, 59, 104, 0.8), rgba(47, 87, 115, 0.6))",
+            }}
+          />
+        </div>
       ))}
 
+      {/* Foreground Content */}
       <div className="container position-relative z-2 px-3">
         <div className="hero-content animate-fade-in">
           <h1 className="display-5 fw-bold">{current.heading}</h1>

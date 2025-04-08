@@ -1,0 +1,80 @@
+.serviceDetail {
+  padding: 80px 0;
+  color: white;
+}
+
+/* Paragraph hover effect */
+.expandParagraph {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease-in-out;
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.extraTextWrapperShow .expandParagraph {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hide paragraphs unless expanded, but keep in DOM */
+.extraTextWrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease-in-out, opacity 0.4s ease;
+}
+
+.extraTextWrapperShow {
+  max-height: 1000px; /* generous enough to reveal all */
+}
+
+/* TLDR block styling */
+.tldrBlock {
+  border-left: 4px solid var(--brandcolor5);
+  padding-left: 1rem;
+}
+
+.tldrTitle {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 0.25rem;
+}
+
+.textAccent {
+  color: var(--brandcolor5) !important;
+}
+.textAccent:hover {
+  background-color: var(--brandcolor5);
+  color: white !important;
+}
+
+/* Image zoom when expanded */
+.transitionImage {
+  transition: transform 0.6s ease-in-out;
+}
+
+.transitionImageZoomed {
+  transform: scale(1.1);
+}
+
+.scrollableText {
+  max-height: 450px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Optional: show a smooth scrollbar only when needed */
+.scrollableText::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollableText::-webkit-scrollbar-thumb {
+  background-color: var(--brandcolor5);
+  border-radius: 3px;
+}
+.scrollableText::-webkit-scrollbar-track {
+  background-color: transparent;
+}

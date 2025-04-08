@@ -1,0 +1,59 @@
+/* HERO: Animate foreground content */
+.animateFadeIn {
+  animation: fadeInZoom 1s ease-in-out;
+}
+
+@keyframes fadeInZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.heroSection {
+  z-index: 1;
+  position: relative;
+}
+
+.heroBgLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.bgActive {
+  opacity: 1;
+  z-index: 1;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.5;
+  border: 2px solid white;
+  transition: opacity 0.3s ease;
+}
+
+.dotActive {
+  opacity: 1;
+  background-color: var(--brandcolor5);
+  border-color: var(--brandcolor5);
+}
+
+.dot:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

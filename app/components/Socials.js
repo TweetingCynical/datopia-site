@@ -1,7 +1,6 @@
-// Socials.js (finalised horizontal scroll layout with visual balance and adaptive sizing)
-
 "use client";
-import { useEffect, useState, useRef } from "react";
+import styles from "./Socials.module.css";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import "../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -71,6 +70,7 @@ export default function Socials() {
       linkedin: ["fab", "linkedin"],
       google: ["fab", "google"],
     };
+
     const brandClass = `social-${name}`;
 
     if (name === "blog") {
@@ -89,7 +89,7 @@ export default function Socials() {
     return icon ? (
       <FontAwesomeIcon
         icon={icon}
-        className={`fa-4x ${brandClass} social-icon`}
+        className={`fa-4x ${brandClass} ${styles.socialIcon}`}
       />
     ) : null;
   };
@@ -99,11 +99,8 @@ export default function Socials() {
       <div className="container">
         <h2 className="mb-4 text-center">Latest Socials</h2>
 
-        <div className="scroll-area-wrapper overflow-hidden">
-          <div
-            className="d-flex gap-4 overflow-auto scroll-snap-x px-2"
-            style={{ scrollSnapType: "x mandatory" }}
-          >
+        <div className="scroll-container-wrapper overflow-hidden">
+          <div className={styles.scrollArea}>
             {posts.map((post, index) => {
               const isFeatured =
                 post.UseType?.toLowerCase().includes("featured");
@@ -111,11 +108,7 @@ export default function Socials() {
               const imageURL = transformImageURL(post.ImageURL);
 
               return (
-                <div
-                  key={index}
-                  className="flex-shrink-0 card-width mx-auto"
-                  style={{ scrollSnapAlign: "start" }}
-                >
+                <div key={index} className={`${styles.cardWidth} mx-auto`}>
                   <a
                     href={link}
                     target="_blank"
@@ -124,11 +117,13 @@ export default function Socials() {
                   >
                     <div
                       className={`card h-100 position-relative overflow-hidden ${
-                        isFeatured ? "featured-social-card" : ""
-                      }`}
+                        styles.cardHover
+                      } ${isFeatured ? styles.featuredSocialCard : ""}`}
                     >
                       {isFeatured && (
-                        <div className="featured-label position-absolute top-0 end-0">
+                        <div
+                          className={`${styles.featuredLabel} position-absolute top-0 end-0`}
+                        >
                           Featured
                         </div>
                       )}
@@ -145,6 +140,7 @@ export default function Socials() {
                             src={imageURL}
                             alt={post.Title}
                             fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             style={{
                               objectFit: "cover",
                               borderTopLeftRadius: "0.375rem",
@@ -154,15 +150,10 @@ export default function Socials() {
                         </div>
                       )}
                       <div className="card-body d-flex flex-column text-on-light">
-                        <h5 className="card-title">{post.Title}</h5>
-                        <p className="card-text">{post.TLDR}</p>
-                        <div
-                          className="mt-auto d-flex justify-content-end align-items-center"
-                          style={{ minHeight: "30px" }}
-                        >
-                          <div className="px-2 py-1">
-                            {getPlatformIcon(post.Platform)}
-                          </div>
+                        <h5 className={styles.cardTitle}>{post.Title}</h5>
+                        <p className={styles.cardText}>{post.TLDR}</p>
+                        <div className="mt-auto d-flex justify-content-end align-items-center">
+                          {getPlatformIcon(post.Platform)}
                         </div>
                       </div>
                     </div>

@@ -1,0 +1,117 @@
+/* Card Base + Featured Card Styling */
+.featuredSocialCard {
+  border: 3px solid gold;
+  border-radius: 0.375rem;
+  animation: shimmerBorder 3s infinite ease-in-out;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+@keyframes shimmerBorder {
+  0%,
+  100% {
+    border-color: gold;
+  }
+  50% {
+    border-color: #ffd700;
+  }
+}
+
+.featuredLabel {
+  background: gold;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-bottom-left-radius: 0.375rem;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Scroll container (horizontal scroll with snapping) */
+.scrollArea {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.scrollArea::-webkit-scrollbar {
+  display: none;
+}
+.scrollArea {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Individual card container */
+.cardWidth {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 90vw;
+  max-width: 320px;
+}
+@media (min-width: 576px) {
+  .cardWidth {
+    width: 45vw;
+  }
+}
+@media (min-width: 768px) {
+  .cardWidth {
+    width: 30vw;
+  }
+}
+@media (min-width: 992px) {
+  .cardWidth {
+    width: 380px;
+  }
+}
+
+.cardHover {
+  transition: all 0.3s ease;
+}
+
+.cardHover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon animations */
+.socialIcon {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.socialIcon:hover {
+  animation: pulse 1s ease-in-out;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Title & TLDR size */
+.cardTitle {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.cardText {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+@media (max-width: 480px) {
+  .cardTitle {
+    font-size: 1rem;
+  }
+  .cardText {
+    font-size: 0.9rem;
+  }
+}

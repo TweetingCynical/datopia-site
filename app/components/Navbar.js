@@ -1,4 +1,5 @@
 "use client";
+import styles from "./Navbar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -24,7 +25,9 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg fixed-top bg-white navbar-border">
+    <nav
+      className={`navbar navbar-expand-lg bg-white fixed-top ${styles.navbarBorder} ${styles.navFixedTop}`}
+    >
       <div className="container-fluid">
         {/* Logo */}
         <Link href="/" className="navbar-brand d-flex align-items-center">
@@ -34,6 +37,7 @@ export default function Navbar() {
               alt="Datopia"
               width={150}
               height={32}
+              priority
             />
           </span>
           <span className="d-block d-md-none">
@@ -42,6 +46,7 @@ export default function Navbar() {
               alt="Datopia"
               width={40}
               height={32}
+              priority
             />
           </span>
         </Link>
@@ -61,11 +66,11 @@ export default function Navbar() {
 
         {/* Nav Links */}
         <div className="collapse navbar-collapse" id="navbarCollapse">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
+          <ul className={`${styles.navbarNav} me-auto mb-2 mb-lg-0 ms-4`}>
             <li className="nav-item">
               <a
-                className={`nav-link ${
-                  activeSection === "products" ? "active" : ""
+                className={`${styles.navLink} ${
+                  activeSection === "products" ? styles.navActive : ""
                 }`}
                 href="#products"
               >
@@ -74,8 +79,8 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <a
-                className={`nav-link ${
-                  activeSection === "services" ? "active" : ""
+                className={`${styles.navLink} ${
+                  activeSection === "services" ? styles.navActive : ""
                 }`}
                 href="#services"
               >
@@ -84,8 +89,8 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <a
-                className={`nav-link ${
-                  activeSection === "socials" ? "active" : ""
+                className={`${styles.navLink} ${
+                  activeSection === "socials" ? styles.navActive : ""
                 }`}
                 href="#socials"
               >
@@ -94,8 +99,8 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <a
-                className={`nav-link ${
-                  activeSection === "blog" ? "active" : ""
+                className={`${styles.navLink} ${
+                  activeSection === "blog" ? styles.navActive : ""
                 }`}
                 href="#blog"
               >
@@ -104,8 +109,8 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <a
-                className={`nav-link ${
-                  activeSection === "reviews" ? "active" : ""
+                className={`${styles.navLink} ${
+                  activeSection === "reviews" ? styles.navActive : ""
                 }`}
                 href="#reviews"
               >
@@ -114,8 +119,8 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <a
-                className={`nav-link ${
-                  activeSection === "contact" ? "active" : ""
+                className={`${styles.navLink} ${
+                  activeSection === "contact" ? styles.navActive : ""
                 }`}
                 href="#contact"
               >
@@ -126,7 +131,7 @@ export default function Navbar() {
 
           {/* Login Button (desktop & mobile) */}
           <div className="d-flex align-items-center">
-            <a href="#login" className="btn btn-brand-outline me-2">
+            <a href="#login" className={`btn me-2 btnBrandOutline`}>
               Log In
             </a>
           </div>

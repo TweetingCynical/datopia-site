@@ -1,4 +1,5 @@
 "use client";
+import styles from "./SiteBanner.module.css";
 import "../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -47,12 +48,16 @@ export default function SiteBanner() {
   ];
 
   return (
-    <div className="site-banner fixed-top d-flex justify-content-between align-items-center px-3 px-md-2">
+    <div
+      className={`${styles.siteBanner} fixed-top d-flex justify-content-between align-items-center px-3 px-md-2`}
+    >
       <div className="d-flex align-items-center text-white fw-bold gap-2">
         <FontAwesomeIcon icon={["fas", "location-dot"]} />
         <span className="location-text">
-          <span className="location-full">Plymouth, and Devon & Cornwall</span>
-          <span className="location-short">SW</span>
+          <span className={styles.locationFull}>
+            Plymouth, and Devon & Cornwall
+          </span>
+          <span className={styles.locationShort}>SW</span>
         </span>
       </div>
 
@@ -65,7 +70,7 @@ export default function SiteBanner() {
             target={href.startsWith("http") ? "_blank" : undefined}
             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
           >
-            <FontAwesomeIcon icon={icon} className="social-icon" />
+            <FontAwesomeIcon icon={icon} className={styles.socialIcon} />
           </a>
         ))}
       </div>

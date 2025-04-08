@@ -1,0 +1,18 @@
+.servicesSection {
+  position: relative;
+  z-index: 2;
+  margin-top: -10px;
+  padding-top: 120px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+}
+
+.serviceItem {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s ease;
+}
+
+.serviceItemShow {
+  opacity: 1;
+  transform: scale(1);
+}

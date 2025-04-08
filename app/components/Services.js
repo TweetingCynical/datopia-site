@@ -1,20 +1,29 @@
 "use client";
+import styles from "./Services.module.css";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Services() {
+  const serviceRefs = useRef([]);
+
   useEffect(() => {
-    const items = document.querySelectorAll(".service-item");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle("show", entry.isIntersecting);
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.serviceItemShow);
+          } else {
+            entry.target.classList.remove(styles.serviceItemShow);
+          }
         });
       },
       { threshold: 0.3 }
     );
 
-    items.forEach((el) => observer.observe(el));
+    serviceRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
     return () => observer.disconnect();
   }, []);
 
@@ -58,18 +67,22 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="services-section py-5 bg-light">
+    <section
+      id="services"
+      className={`${styles.servicesSection} py-5 bg-light`}
+    >
       <div className="container">
         <h2 className="text-center mb-5">Our Services</h2>
         <div className="row">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div
               key={service.id}
               className="col-12 col-md-6 col-lg-4 mb-4 d-flex justify-content-center"
             >
               <a
+                ref={(el) => (serviceRefs.current[index] = el)}
                 href={`#${service.id}`}
-                className="text-decoration-none text-center service-item"
+                className={`text-decoration-none text-center ${styles.serviceItem}`}
               >
                 <Image
                   src={service.icon}

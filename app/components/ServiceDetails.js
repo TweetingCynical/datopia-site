@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import styles from "./ServiceDetails.module.css";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -120,8 +121,10 @@ export default function ServiceDetails() {
                   } px-0 d-flex align-items-stretch overflow-hidden`}
                 >
                   <div
-                    className={`w-100 position-relative transition-image ${
-                      expanded[service.id] ? "zoomed" : ""
+                    className={`w-100 position-relative ${
+                      styles.transitionImage
+                    } ${
+                      expanded[service.id] ? styles.transitionImageZoomed : ""
                     }`}
                     style={{ minHeight: "400px" }}
                   >
@@ -129,7 +132,7 @@ export default function ServiceDetails() {
                       src={service.image}
                       alt={service.title}
                       fill
-                      className="object-fit-cover"
+                      className="objectFitCover"
                       sizes="(min-width: 768px) 50vw, 100vw"
                     />
                   </div>
@@ -144,11 +147,11 @@ export default function ServiceDetails() {
                   <div className="text-center text-md-start">
                     <h2>{service.title}</h2>
 
-                    <div className="tldr-block mt-3 mb-4">
-                      <h6 className="tldr-title">TL;DR</h6>
+                    <div className={`${styles.tldrBlock} mt-3 mb-4`}>
+                      <h6 className={styles.tldrTitle}>TL;DR</h6>
                       <p className="lead fw-bold">{service.tldr}</p>
                       <button
-                        className="btn btn-link text-decoration-none text-accent fw-bold"
+                        className={`btn btn-link text-decoration-none ${styles.textAccent} fw-bold`}
                         onClick={(event) => toggleExpanded(service.id, event)}
                       >
                         {expanded[service.id] ? "Show less" : "Read more"}
@@ -156,19 +159,22 @@ export default function ServiceDetails() {
                     </div>
 
                     <div
-                      className={`extra-text-wrapper ${
-                        expanded[service.id] ? "show" : ""
+                      className={`${styles.extraTextWrapper} ${
+                        expanded[service.id] ? styles.extraTextWrapperShow : ""
                       }`}
                     >
-                      <div className="scrollable-text">
+                      <div className={styles.scrollableText}>
                         {service.text.map((para, idx) => (
-                          <p key={idx} className="expand-paragraph lead">
+                          <p
+                            key={idx}
+                            className={`${styles.expandParagraph} lead`}
+                          >
                             {para}
                           </p>
                         ))}
                       </div>
 
-                      <a href="#contact" className="btn btn-brand mt-3">
+                      <a href="#contact" className="btn btnBrand mt-3">
                         Get Started
                       </a>
                     </div>

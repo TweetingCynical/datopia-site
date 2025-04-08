@@ -1,0 +1,51 @@
+.navbarBorder {
+  border-bottom: 5px solid var(--brandcolor1) !important;
+}
+
+.navbarNav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none; /* remove bullets */
+  padding-left: 0; /* reset default ul padding */
+  margin-bottom: 0; /* prevent unexpected gaps */
+}
+
+.navLink {
+  color: var(--brandcolor1);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  text-decoration: none;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: var(--brandcolor3); /* use another brand colour */
+  transition: width 0.3s ease-in-out;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.navLink:hover {
+  color: var(--brandcolor3);
+}
+
+.navActive {
+  color: var(--brandcolor3) !important;
+}
+
+.navActive::after {
+  width: 100%;
+}
+
+.navFixedTop {
+  top: 30px; /* Push down by the height of your SiteBanner */
+  z-index: 1030;
+}

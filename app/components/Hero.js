@@ -1,4 +1,5 @@
 "use client";
+import styles from "./Hero.module.css";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
@@ -32,7 +33,7 @@ export default function Hero() {
       setActiveSlide((prev) => (prev + 1) % slides.length);
     }, 7000);
     return () => clearInterval(interval);
-  }, []);
+  }, [slides.length]);
 
   // Parallax effect
   useEffect(() => {
@@ -53,7 +54,7 @@ export default function Hero() {
 
   return (
     <section
-      className="hero-section d-flex align-items-center justify-content-center text-end text-white"
+      className={`${styles.heroSection} d-flex align-items-center justify-content-center text-end text-white`}
       style={{ minHeight: "100vh", overflow: "hidden" }}
     >
       {/* Animated Background Layers with Parallax */}
@@ -61,14 +62,16 @@ export default function Hero() {
         <div
           key={index}
           ref={(el) => (parallaxRef.current[index] = el)}
-          className={`hero-bg-layer ${index === activeSlide ? "active" : ""}`}
+          className={`${styles.heroBgLayer} ${
+            index === activeSlide ? styles.bgActive : ""
+          }`}
         >
           <Image
             src={slide.bg}
             alt={slide.heading}
             fill
+            className={`objectFitCover`}
             priority
-            className="object-fit-cover"
           />
           <div
             className="position-absolute top-0 start-0 w-100 h-100"
@@ -82,10 +85,10 @@ export default function Hero() {
 
       {/* Foreground Content */}
       <div className="container position-relative z-2 px-3">
-        <div className="hero-content animate-fade-in">
+        <div className={`hero-content ${styles.animateFadeIn}`}>
           <h1 className="display-5 fw-bold">{current.heading}</h1>
           <p className="lead">{current.text}</p>
-          <a href="#services" className="btn btn-brand btn-lg mt-3">
+          <a href="#services" className="btn btnBrand btn-lg mt-3">
             {current.cta}
           </a>
 
@@ -93,7 +96,9 @@ export default function Hero() {
             {slides.map((_, index) => (
               <button
                 key={index}
-                className={`dot ${index === activeSlide ? "active" : ""}`}
+                className={`${styles.dot} ${
+                  index === activeSlide ? styles.dotActive : ""
+                }`}
                 onClick={() => setActiveSlide(index)}
                 aria-label={`Go to slide ${index + 1}`}
               />

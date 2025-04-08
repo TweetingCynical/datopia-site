@@ -1,0 +1,33 @@
+.siteBanner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background-color: var(--brandcolor1);
+  font-size: 0.75rem;
+  z-index: 1040; /* Must be higher than navbar (default Bootstrap navbar is 1030) */
+}
+
+.siteBanner .socialIcon {
+  color: white;
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.siteBanner .socialIcon:hover {
+  transform: scale(1.15);
+}
+
+.locationShort {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .locationFull {
+    display: none;
+  }
+  .locationShort {
+    display: inline;
+  }
+}

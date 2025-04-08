@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function ServiceDetails() {
   const [expanded, setExpanded] = useState({});
@@ -76,6 +77,21 @@ export default function ServiceDetails() {
     },
   ];
 
+  const toggleExpanded = (id, e) => {
+    const clickedElement = e.currentTarget;
+    const rectBefore = clickedElement.getBoundingClientRect().top;
+
+    setExpanded((prev) => (prev[id] ? {} : { [id]: true }));
+
+    setTimeout(() => {
+      const rectAfter = clickedElement.getBoundingClientRect().top;
+      const delta = rectAfter - rectBefore;
+      if (delta !== 0) {
+        window.scrollBy({ top: -delta, behavior: "auto" });
+      }
+    }, 50);
+  };
+
   return (
     <>
       {services.map((service, index) => {
@@ -84,29 +100,16 @@ export default function ServiceDetails() {
           ? "bg-brand3 text-on-dark"
           : "bg-white text-on-light";
 
-        const toggleExpanded = (id, e) => {
-          const clickedElement = e.currentTarget;
-          const rectBefore = clickedElement.getBoundingClientRect().top;
-
-          setExpanded((prev) => (prev[id] ? {} : { [id]: true }));
-
-          setTimeout(() => {
-            const rectAfter = clickedElement.getBoundingClientRect().top;
-            const delta = rectAfter - rectBefore;
-
-            // Compensate scroll by the same amount the button moved
-            if (delta !== 0) {
-              window.scrollBy({ top: -delta, behavior: "auto" });
-            }
-          }, 50);
-        };
-
         return (
-          <section
+          <motion.section
             ref={(el) => (sectionRefs.current[service.id] = el)}
             key={service.id}
             id={service.id}
             className={`service-split ${bgClass}`}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div className="w-100">
               <div className="row g-0 align-items-stretch">
@@ -173,7 +176,7 @@ export default function ServiceDetails() {
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
         );
       })}
     </>

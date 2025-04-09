@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Services from "./components/Services";
 import ServiceDetails from "./components/ServiceDetails";
 import Socials from "./components/Socials";
+import Reviews from "./components/Reviews";
 import Image from "next/image";
 // import styles from "./page.module.css";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <Services />
       <ServiceDetails />
       <Socials />
+      <Reviews />
       <main className={"container pt-5 mt-5 text-center"}>
         <Image
           src="/images/datopia_logo_small.png"

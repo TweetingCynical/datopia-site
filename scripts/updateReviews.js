@@ -38,16 +38,6 @@ const fetchGoogleReviews = () => {
     const googleReviews = (googleResult?.reviews || []).filter(
       (r) => r.rating >= 4
     );
-    googleReviews.push({
-      author_name: "Fake Reviewer",
-      rating: 5,
-      text: "This is a test review from Google.",
-      time: Date.now() / 1000,
-      relative_time_description: "Just now",
-      author_url: null,
-      profile_photo_url: null,
-      language: "en",
-    });
 
     const irlData = JSON.parse(fs.readFileSync(TESTIMONIALS_PATH, "utf-8"));
     const irlReviews = irlData?.result?.testimonials || [];
@@ -56,15 +46,17 @@ const fetchGoogleReviews = () => {
 
     const averageRating =
       allReviews.length > 0
-        ? (
-            allReviews.reduce((sum, r) => sum + (r.rating || 0), 0) /
-            allReviews.length
-          ).toFixed(1)
+        ? parseFloat(
+            (
+              allReviews.reduce((sum, r) => sum + (r.rating || 0), 0) /
+              allReviews.length
+            ).toFixed(1)
+          )
         : null;
 
     const combined = {
       average_rating: averageRating,
-      total_reviews: allReviews.length,
+      total_reviews: allReviews.length, // ✅ Reflects what’s actually shown on the site
       reviews: allReviews,
     };
 

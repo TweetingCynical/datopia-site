@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import "../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
 
 const ALLOWED_PLATFORMS = [
   "x",
@@ -95,9 +96,16 @@ export default function Socials() {
   };
 
   return (
-    <section id="socials" className="py-5 bg-light">
+    <motion.section
+      id="socials"
+      className="py-5 bg-white"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+    >
       <div className="container">
-        <h2 className="mb-4 text-center">Latest Socials</h2>
+        <h2 className="mb-4 text-center text-on-light">Latest Socials</h2>
 
         <div className="scroll-container-wrapper overflow-hidden">
           <div className={styles.scrollArea}>
@@ -164,6 +172,6 @@ export default function Socials() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

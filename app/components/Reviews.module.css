@@ -1,0 +1,111 @@
+/* Scrollable Container */
+.scrollWrapper {
+  max-height: 75vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brandcolor5) transparent;
+}
+
+.scrollWrapper::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollWrapper::-webkit-scrollbar-thumb {
+  background-color: var(--brandcolor5);
+  border-radius: 4px;
+}
+
+/* Masonry Grid */
+.gridWrap {
+  columns: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 576px) {
+  .gridWrap {
+    columns: 2;
+  }
+}
+@media (min-width: 992px) {
+  .gridWrap {
+    columns: 3;
+  }
+}
+
+.gridItem {
+  break-inside: avoid;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.gridItem:hover {
+  transform: translateY(-3px);
+}
+
+/* Reviewer Block */
+.reviewCard p {
+  margin-bottom: 0.5rem;
+}
+
+.initialsCircle {
+  width: 40px;
+  height: 40px;
+  background-color: var(--brandcolor5);
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+
+/* Response Styling */
+.responseBox {
+  border-left: 4px solid var(--brandcolor4);
+  padding-left: 0.75rem;
+  margin-top: 0.75rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Special Rating Badge Block */
+.badgeCard {
+  border: 2px solid var(--brandcolor5);
+  border-radius: 1rem;
+  padding: 2rem 1rem;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+  color: var(--brandcolor5);
+  text-decoration: none;
+}
+
+.badgeCard:hover {
+  background-color: var(--brandcolor5);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.badgeCard:hover small,
+.badgeCard:hover h4,
+.badgeCard:hover p {
+  color: white !important;
+}
+
+/* New badge */
+.newBadge {
+  background-color: var(--brandcolor1);
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}

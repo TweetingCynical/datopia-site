@@ -1,6 +1,6 @@
 {
-  "average_rating": null,
-  "total_reviews": 0,
+  "average_rating": "4.9",
+  "total_reviews": 10,
   "reviews": [
     {
       "author_name": "Rachel T.",
@@ -99,6 +99,16 @@
       "text": "I wasn’t sure what to expect, but the dashboard Datopia created lets me track sales by product and season. It’s genuinely changed how I plan.",
       "time": 1742083200,
       "original_author_response": "Thank you Emily. Happy to say you are the first florist that has ever asked us for a data dashboard, so we're delighted you love it!",
+      "language": "en"
+    },
+    {
+      "author_name": "Fake Reviewer",
+      "rating": 5,
+      "text": "This is a test review from Google.",
+      "time": 1744190863.728,
+      "relative_time_description": "Just now",
+      "author_url": null,
+      "profile_photo_url": null,
       "language": "en"
     }
   ]

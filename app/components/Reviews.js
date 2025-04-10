@@ -96,7 +96,7 @@ export default function Reviews() {
           <div className={styles.gridWrap}>
             {/* Badge block */}
             <a
-              href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID"
+              href="https://search.google.com/local/writereview?placeid=ChIJia9gaHx9kiMRUaRgAAajorE"
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.gridItem} ${styles.badgeCard} btn btn-brand-outline text-center text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center`}
